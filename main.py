@@ -12,6 +12,8 @@ LINE = "I scanned the crumb twice and ruled it load-bearing. I don't demolish ho
 
 def main():
     assert LINE, "entry line must not be empty"
+    assert LINE.strip(), "entry line must not be only whitespace"
+    assert "\n" not in LINE, "entry line must be a single line"
     assert len(LINE) <= 140, "entry line exceeds the 140-character limit"
     os.makedirs("/output", exist_ok=True)
     with open("/output/entry.txt", "w", encoding="utf-8", newline="") as f:
